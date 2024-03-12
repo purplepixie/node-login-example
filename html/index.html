@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Example Login</title>
+        <link rel="stylesheet" href="static/site.css">
+        <script src="static/site.js" type="text/javascript"></script>
+    </head>
+    <body>
+        <h1>Example Site with Node Login</h1>
+        <div>
+            <input type="text" length="16" placeholder="username" id="login_username"><br />
+            <input type="password" length="16" placeholder="password" id="login_password"><br />
+            <input type="button" onclick="loginClick();" value="Login to System">
+        </div>
+
+        <div>
+            Session ID: <span id="session_id">Unset</span>
+        </div>
+
+        <div>
+            <input type="button" onclick="checkLoginClick();" value="Check Login Status"> <span id="login_status"></span>
+        </div>
+
+        <div>
+            <input type="button" onclick="logoutClick();" value="Logout of System">
+        </div>
+    </body>
+</html>
