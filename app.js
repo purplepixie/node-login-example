@@ -55,10 +55,10 @@ app.get("/api/checklogin/:sessionid", function (req, res) {
     }
     sessionid = req.params.sessionid;
     // check session for login
-    if (sessions.sessionid != undefined && sessions.sessionid != "")
+    if (sessions[sessionid] != undefined && sessions[sessionid] != "")
     {
         response.login = true;
-        console.log("Valid session for user: "+sessions.sessionid+" logged in, SessionID: "+sessionid);
+        console.log("Valid session for user: "+sessions[sessionid]+" logged in, SessionID: "+sessionid);
     }
     else
         console.log("Invalid session for SessionID: "+sessionid);
@@ -69,10 +69,10 @@ app.get("/api/checklogin/:sessionid", function (req, res) {
 // Logout from session
 app.get("/api/logout/:sessionid", function (req, res) {
     sessionid = req.params.sessionid;
-    if (sessions.sessionid != undefined)
+    if (sessions[sessionid] != undefined)
     {
         console.log("Logout request for user: "+sessions.sessionid+" for sessionID:"+sessionid);
-        delete sessions.sessionid;
+        delete sessions[sessionid];
     }
     else   
         console.log("Illegal logout for sessionID:"+sessionid);
@@ -99,7 +99,7 @@ app.post("/api/login", function (req, res) {
         response.message="Logged in";
         // and create our session variables
         sessionid = randomUUID();
-        sessions.sessionid = req.body.username;
+        sessions[sessionid] = req.body.username;
         response.sessionid = sessionid;
         console.log("User: "+req.body.username+" logged in, SessionID: "+sessionid);
     }
